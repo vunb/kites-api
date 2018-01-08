@@ -1,0 +1,27 @@
+{
+  "name": "@kites/api",
+  "version": "0.1.0",
+  "description": "Abstract API Discovery for Kites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vunb/kites-api.git"
+  },
+  "keywords": [
+    "kites-framework"
+  ],
+  "author": "vunb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vunb/kites-api/issues"
+  },
+  "homepage": "https://github.com/vunb/kites-api#readme",
+  "files": [
+    "lib",
+    "index.js",
+    "kites.config.js"
+  ]
+}
