@@ -3,6 +3,7 @@ module.exports = {
     main: 'lib/main.js',
     options: {
         crud: true,
-        apiDirectory: 'api'
+        apiDirectory: 'api',
+        apiPrefix: '/api'
     }
 }

@@ -1,6 +1,7 @@
 var path = require('path');
 
 [
+    'discover',
     'kites-api',
     // Always end
     'endTest',
