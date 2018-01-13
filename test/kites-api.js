@@ -6,8 +6,8 @@ var engine = require('@kites/engine');
 var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
-test('kites express', function (t) {
-    t.plan(2);
+test('kites api test', function (t) {
+    t.plan(3);
 
     engine({
             logger: {
@@ -37,6 +37,15 @@ test('kites express', function (t) {
                 .expect(200)
                 .then((res) => {
                     t.equal(res.body.msg, 'pong', 'kites ping')
+                })
+                .catch(t.fail)
+
+            request(kites.express.app)
+                .get('/api/user/info')
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .then((res) => {
+                    t.equal(res.body, 'user', 'kites user info')
                 })
                 .catch(t.fail)
         })
