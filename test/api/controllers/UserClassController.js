@@ -4,7 +4,7 @@ class UserClassController {
 
     constructor(kites, options) {
         kites.logger.info(`hello (${this.name}): `, options);
-        this.curd = false;
+        this.crud = true;
     }
 
     'get /:id/profile' (req, res, next) {
