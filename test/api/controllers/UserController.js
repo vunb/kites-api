@@ -1,3 +1,4 @@
+'use strict';
 /**
  * User Controller
  * Return an literal object or an instance of User class.

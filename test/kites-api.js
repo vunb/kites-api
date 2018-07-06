@@ -7,7 +7,7 @@ var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
 test('kites api test', function (t) {
-    t.plan(3);
+    t.plan(5);
 
     engine({
             logger: {
@@ -30,7 +30,6 @@ test('kites api test', function (t) {
                 .then(t.pass.bind(t, 'kites info'))
                 .catch(t.fail)
 
-
             request(kites.express.app)
                 .get('/api/ping')
                 .expect('Content-Type', /json/)
@@ -48,5 +47,29 @@ test('kites api test', function (t) {
                     t.equal(res.body, 'user', 'kites user info')
                 })
                 .catch(t.fail)
+
+            // test kites service
+            request(kites.express.app)
+                .get('/api/user')
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .then((res) => {
+                    t.equal(res.body, 'user', 'kites service usage')
+                })
+                .catch(t.fail)
+
+                            // test kites service
+            request(kites.express.app)
+            .get('/api/userclass')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((res) => {
+                t.deepEqual(res.body, [
+                    1,
+                    2,
+                    3
+                ], 'kites service override: UserClass.findAll')
+            })
+            .catch(t.fail)
         })
 })

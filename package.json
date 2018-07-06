@@ -4,7 +4,8 @@
   "description": "Abstract API Discovery for Kites",
   "main": "index.js",
   "scripts": {
-    "test": "node test | tap-spec"
+    "test": "node test | tap-spec",
+    "dev": "node test/test"
   },
   "repository": {
     "type": "git",
