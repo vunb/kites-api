@@ -7,7 +7,7 @@ var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
 test('kites api test', function (t) {
-    t.plan(5);
+    t.plan(6);
 
     engine({
             logger: {
@@ -58,7 +58,7 @@ test('kites api test', function (t) {
                 })
                 .catch(t.fail)
 
-                            // test kites service
+            // test kites service
             request(kites.express.app)
             .get('/api/userclass')
             .expect('Content-Type', /json/)
@@ -69,6 +69,15 @@ test('kites api test', function (t) {
                     2,
                     3
                 ], 'kites service override: UserClass.findAll')
+            })
+            .catch(t.fail)
+
+            // get user profile
+            request(kites.express.app)
+            .get('/api/userclass/vunb/profile')
+            .expect(200)
+            .then((res) => {
+                t.equal(res.body, 'userclass', 'get user profile')
             })
             .catch(t.fail)
         })
