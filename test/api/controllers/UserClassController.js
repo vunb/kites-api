@@ -4,7 +4,7 @@ class UserClassController {
 
     constructor(kites, options) {
         kites.logger.info(`hello (${this.name}): `, options);
-        this.curd = false;
+        this.crud = true;
     }
 
     'get /:id/profile' (req, res, next) {
@@ -17,7 +17,7 @@ class UserClassController {
         var userService = this.kites.service(this.name);
 
         // get all user
-        userService.getAll().then((result) => {
+        userService.getAll(req).then((result) => {
             res.ok(result);
         })
     }
