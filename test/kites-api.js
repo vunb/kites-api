@@ -7,7 +7,7 @@ var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
 test('kites api test', function (t) {
-    t.plan(6);
+    t.plan(7);
 
     engine({
             logger: {
@@ -54,31 +54,60 @@ test('kites api test', function (t) {
                 .expect('Content-Type', /json/)
                 .expect(200)
                 .then((res) => {
-                    t.equal(res.body, 'user', 'kites service usage')
+                    t.deepEqual(res.body, [
+                        1,
+                        2,
+                        3
+                    ], 'kites service usage (override: User.findAll)')
+                })
+                .catch(t.fail)
+
+            // create an user
+            request(kites.express.app)
+                .post('/api/userclass')
+                .type('form')
+                .send({
+                    firstname: 'Vu',
+                    lastname: 'Nhu-Bao',
+                    username: 'vunb'
+                })
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .then((res) => {
+                    t.deepEqual(res.body, {
+                        firstname: 'Vu',
+                        lastname: 'Nhu-Bao',
+                        username: 'vunb',
+                        id: 1
+                    }, 'UserClass.create a new user from base service')
                 })
                 .catch(t.fail)
 
             // test kites service
             request(kites.express.app)
-            .get('/api/userclass')
-            .expect('Content-Type', /json/)
-            .expect(200)
-            .then((res) => {
-                t.deepEqual(res.body, [
-                    1,
-                    2,
-                    3
-                ], 'kites service override: UserClass.findAll')
-            })
-            .catch(t.fail)
+                .get('/api/userclass')
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .then((res) => {
+                    t.deepEqual(res.body, {
+                        total: 1,
+                        result: [{
+                            firstname: 'Vu',
+                            lastname: 'Nhu-Bao',
+                            username: 'vunb',
+                            id: 1
+                        }]
+                    }, 'UserClass.findAll from base service')
+                })
+                .catch(t.fail)
 
             // get user profile
             request(kites.express.app)
-            .get('/api/userclass/vunb/profile')
-            .expect(200)
-            .then((res) => {
-                t.equal(res.body, 'userclass', 'get user profile')
-            })
-            .catch(t.fail)
+                .get('/api/userclass/vunb/profile')
+                .expect(200)
+                .then((res) => {
+                    t.equal(res.body, 'userclass', 'get user profile')
+                })
+                .catch(t.fail)
         })
 })

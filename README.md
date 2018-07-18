@@ -12,6 +12,39 @@ Discover API controllers for Kites
 * Auto generate RESTful API with basic CRUD operations
 * Auto generate user-defined API actions 
 
+Extension Options
+=================
+
+* **actions**: Enable auto generate controller actions, default: `true`
+* **crud**: Enable auto generate RESTful API with CURD operations on model, default: `true`
+* **apiDirectory**: Prefix RESTful API resource, default: `/api`
+* **connection**: Default connection used for model, default: `memory`
+* **dataSource.[i].name**: Datasource driver name (user defined)
+* **dataSource.[i].driver**: Datasource driver name for specifed adapter (eg: `mongoose`)
+* **dataSource.[i].host**: Hostname
+* **dataSource.[i].port**: Username
+* **dataSource.[i].username**: Port
+* **dataSource.[i].password**: Password
+* **dataSource.[i].database**: Database name
+* **dataSource.[i].active**: Allow kites connect at startup
+* **dataSource.[i].pool**: Connection pooling
+
+Extension Usage
+===============
+
+You can apply this extention manually tho [kites-engine](https://github.com/vunb/kites-engine)
+
+```js
+var kites = require('@kites/engine')()
+kites.use(require('@kites/api')())
+```
+
+Auto discover mode, just install the extension as a dependency:
+
+```bash
+npm install @kites/api
+```
+
 # License
 
 MIT License

@@ -1,10 +1,10 @@
-class UsersModel {
+class UserClassModel {
 
     /**
      * Table or collection name
      */
     get name() {
-        return 'Users';
+        return 'UserClass';
     }
 
     /**
@@ -39,4 +39,4 @@ class UsersModel {
     }
 }
 
-module.exports = UsersModel;
+module.exports = UserClassModel;
