@@ -17,7 +17,7 @@ class UserClassController {
         var userService = this.kites.service(this.name);
 
         // get all user
-        userService.getAll().then((result) => {
+        userService.getAll(req).then((result) => {
             res.ok(result);
         })
     }
