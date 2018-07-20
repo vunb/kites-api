@@ -9,10 +9,11 @@ class UsersModel {
 
     /**
      * Specify own data source
+     * Change default config in extention options
      */
-    get database() {
-        return 'memory';
-    }
+    // get database() {
+    //     return 'memory';
+    // }
 
     /**
      * Get user model schema
@@ -20,12 +21,12 @@ class UsersModel {
     get schema() {
         return {
             firstname: {
-                type: 'String'
+                type: String
             },
             lastname: {
-                type: 'String'
+                type: String
             },
-            username: String,
+            username: String
         }
     }
 

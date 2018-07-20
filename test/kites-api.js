@@ -7,7 +7,7 @@ var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
 test('kites api test', function (t) {
-    t.plan(7);
+    t.plan(8);
 
     engine({
             logger: {
@@ -22,7 +22,12 @@ test('kites api test', function (t) {
         })
         .use(kitesExpress())
         .use(kitesApi())
+        .ready((kites) => {
+            // util
+            t.equal(kites.db.user.modelName, 'user', 'Access user model name via proxy (db)');
+        })
         .init().then((kites) => {
+            // make requests
             request(kites.express.app)
                 .get('/api/kites')
                 .expect(200)

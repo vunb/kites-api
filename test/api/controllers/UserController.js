@@ -9,7 +9,7 @@ module.exports = function (kites, options) {
     this.actions = true;
     this.crud = true;
 
-    this.logger.debug('hello kites api controller!', this.name, options)
+    // this.logger.debug('hello kites api controller!', this.name, options)
 
     // define HTTP GET (advanced)
     this['get /:id/profile'] = function (req, res, next) {

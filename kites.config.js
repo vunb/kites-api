@@ -12,7 +12,7 @@ module.exports = {
                 driver: 'memory',
                 active: true
             }, {
-                name: 'mySQL',
+                name: 'mysql',
                 driver: 'mysql', // or mariadb
                 host: 'localhost',
                 port: '3306',
@@ -23,11 +23,11 @@ module.exports = {
                 pool: true // optional for use pool directly
             }, {
                 name: 'mongodb',
-                driver: 'mongoose', // or mongoose
+                driver: 'mongodb', // or mongoose
                 host: 'localhost',
-                port: '27101',
-                username: 'test',
-                password: 'test',
+                port: '27017',
+                username: '',
+                password: '',
                 database: 'test',
                 active: false,
                 rs: false // replication set
