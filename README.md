@@ -10,7 +10,8 @@ Discover API controllers for Kites
 
 * Auto Discover: models, services and controllers
 * Auto generate RESTful API with basic CRUD operations
-* Auto generate user-defined API actions 
+* Auto generate user-defined API actions
+* Quick access models, services via Proxy
 
 Extension Options
 =================
@@ -43,6 +44,41 @@ Auto discover mode, just install the extension as a dependency:
 
 ```bash
 npm install @kites/api
+```
+
+## APIs and Events
+
+1. Access models and services
+
+* `kites.model([model_name])` - get model has initialized
+* `kites.service([service_name])` - get service has initialized
+* `kites.controller([controller_name])` - get controller has initialized
+
+Example:
+
+```js
+// Obtain models and service by:
+var userModel = kites.model('user');
+var userService = kites.service('user');
+
+// Or quick access these one via proxy
+var userModel = kites.db.user
+var userService = kites.sv.user
+```
+
+2. Listen event model initialized
+
+* `apiBeforeConfigure`: Before kites api configure
+* `apiModelRegistered`: All models loaded in kites system
+* `apiModelInitialized`: All models registered and initialized
+* `apiConfigure`: All models, services and controllers initialized
+
+Example:
+
+```js
+kites.on('apiModelInitialized', (kites) => {
+    console.log(kites.models);
+})
 ```
 
 # License
