@@ -7,7 +7,7 @@ var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
 test('kites api test', function (t) {
-    t.plan(9);
+    t.plan(10);
 
     engine({
             logger: {
@@ -24,7 +24,8 @@ test('kites api test', function (t) {
         .use(kitesApi())
         .ready((kites) => {
             // util
-            t.equal(kites.db.user.modelName, 'user', 'Access user model via proxy (db)');
+            t.equal(kites.db.user.modelName, 'user', 'Access user model via proxy (db.1)');
+            t.equal(kites.db.UserClass.modelName, 'UserClass_TableOrCollectionName', 'Access user model via proxy (db.2)');
             t.equal(kites.sv.uSer.name, 'user', 'Access user service via proxy (sv)');
         })
         .init().then((kites) => {
