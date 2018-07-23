@@ -3,8 +3,8 @@ class UserClassModel {
     /**
      * Table or collection name
      */
-    get name() {
-        return 'UserClass';
+    get collection() {
+        return 'UserClass_TableOrCollectionName';
     }
 
     /**
