@@ -18,6 +18,7 @@ Extension Options
 
 * **actions**: Enable auto generate controller actions, default: `true`
 * **crud**: Enable auto generate RESTful API with CURD operations on model, default: `true`
+* **useBaseModel**: Inherits from base model, default: `true`.
 * **apiDirectory**: Prefix RESTful API resource, default: `/api`
 * **connection**: Default connection used for model, default: `memory`
 * **dataSource.[i].name**: Datasource driver name (user defined)
