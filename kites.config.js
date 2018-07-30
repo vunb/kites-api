@@ -4,6 +4,7 @@ module.exports = {
     options: {
         actions: true,
         crud: true,
+        nativeModel: false,
         apiDirectory: 'api',
         apiPrefix: '/api',
         connection: 'memory', // default connection
