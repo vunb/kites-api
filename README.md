@@ -5,6 +5,7 @@ Discover API controllers for Kites
 [![Join the chat at https://gitter.im/nodevn/kites](https://badges.gitter.im/nodevn/kites.svg)](https://gitter.im/nodevn/kites)
 [![npm version](https://img.shields.io/npm/v/@kites/api.svg?style=flat)](https://www.npmjs.com/package/@kites/api)
 [![npm downloads](https://img.shields.io/npm/dm/@kites/api.svg)](https://www.npmjs.com/package/@kites/api)
+[![Travis](https://travis-ci.org/vunb/kites-api.svg?branch=stable)](https://travis-ci.org/vunb/kites-api)
 
 # Features
 
@@ -18,6 +19,7 @@ Extension Options
 
 * **actions**: Enable auto generate controller actions, default: `true`
 * **crud**: Enable auto generate RESTful API with CURD operations on model, default: `true`
+* **useBaseModel**: Inherits from base model, default: `true`.
 * **apiDirectory**: Prefix RESTful API resource, default: `/api`
 * **connection**: Default connection used for model, default: `memory`
 * **dataSource.[i].name**: Datasource driver name (user defined)
