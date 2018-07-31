@@ -5,6 +5,7 @@ Discover API controllers for Kites
 [![Join the chat at https://gitter.im/nodevn/kites](https://badges.gitter.im/nodevn/kites.svg)](https://gitter.im/nodevn/kites)
 [![npm version](https://img.shields.io/npm/v/@kites/api.svg?style=flat)](https://www.npmjs.com/package/@kites/api)
 [![npm downloads](https://img.shields.io/npm/dm/@kites/api.svg)](https://www.npmjs.com/package/@kites/api)
+[![Travis](https://travis-ci.org/vunb/kites-api.svg?branch=stable)](https://travis-ci.org/vunb/kites-api)
 
 # Features
 
