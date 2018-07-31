@@ -1,6 +1,6 @@
 {
   "name": "@kites/api",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Abstract API Discovery for Kites",
   "main": "index.js",
   "scripts": {
