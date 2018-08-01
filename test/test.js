@@ -16,5 +16,7 @@ engine({
 .use(kitesExpress())
 .use(kitesApi())
 .init().then((kites) => {
-    console.log('ok')
+    var md = kites.db.userClass;
+    var native = kites.db.nativeModel;
+    console.log('ok' + md.name)
 });
