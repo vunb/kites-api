@@ -69,7 +69,7 @@ var userService = kites.sv.user
 
 2. Listen event model initialized
 
-* `apiBeforeConfigure`: Before kites api configure
+* `beforeApiConfigure`: Before kites api configure
 * `apiModelRegistered`: All models loaded in kites system
 * `apiModelInitialized`: All models registered and initialized
 * `apiConfigure`: All models, services and controllers initialized
