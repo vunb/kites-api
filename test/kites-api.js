@@ -7,7 +7,7 @@ var kitesExpress = require('@kites/express');
 var kitesApi = require('../index');
 
 test('kites api test', function (t) {
-    t.plan(10);
+    t.plan(12);
 
     engine({
             logger: {
@@ -22,6 +22,17 @@ test('kites api test', function (t) {
         })
         .use(kitesExpress())
         .use(kitesApi())
+        .use((kites) => {
+            kites.on('expressConfigure', (app) => {
+                app.use(function (err, req, res, next) {
+                    if (req.wantsJSON) {
+                        res.status(500).json(err);
+                    } else {
+                        next(err)
+                    }
+                })
+            })
+        })
         .ready((kites) => {
             // util
             t.equal(kites.db.user.modelName, 'user', 'Access user model via proxy (db.1)');
@@ -114,6 +125,26 @@ test('kites api test', function (t) {
                 .expect(200)
                 .then((res) => {
                     t.equal(res.body, 'userclass', 'get user profile')
+                })
+                .catch(t.fail)
+
+            // Async await
+            request(kites.express.app)
+                .get('/api/userclass/await')
+                .expect(200)
+                .then((res) => {
+                    t.equal(res.body, 'resolved', 'Async await')
+                })
+                .catch(t.fail)
+
+            // Async throw
+            request(kites.express.app)
+                //set header for this test
+                .get('/api/userclass/throws')
+                .set('Accept', 'json')
+                .expect(500)
+                .then((res) => {
+                    t.equal(res.body, 'Async throw!!!', 'Async throw')
                 })
                 .catch(t.fail)
         })

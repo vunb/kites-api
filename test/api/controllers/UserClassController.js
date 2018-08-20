@@ -11,7 +11,7 @@ class UserClassController {
         res.ok(this.name);
     }
 
-    findAll (req, res, next) {
+    findAll(req, res, next) {
         // get user service
         this.logger.info('This name:', this.name);
         var userService = this.kites.service(this.name);
@@ -21,6 +21,23 @@ class UserClassController {
             res.ok(result);
         })
     }
+
+    async await (req, res, next) {
+        function resolveAfter2Seconds() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve('resolved');
+                }, 1000);
+            });
+        }
+        var result = await resolveAfter2Seconds();
+        res.ok(result);
+    }
+
+    async throws (req, res, next) {
+        throw 'Async throw!!!';
+    }
+
 }
 
 module.exports = UserClassController;
