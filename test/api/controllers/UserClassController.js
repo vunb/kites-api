@@ -11,15 +11,14 @@ class UserClassController {
         res.ok(this.name);
     }
 
-    findAll(req, res, next) {
+    async findAll(req, res, next) {
         // get user service
         this.logger.info('This name:', this.name);
-        var userService = this.kites.service(this.name);
+        var userService = this.kites.sv.UserClass;
 
         // get all user
-        userService.getAll(req).then((result) => {
-            res.ok(result);
-        })
+        var result = await userService.getAll(req);
+        res.ok(result);
     }
 
     async await (req, res, next) {
