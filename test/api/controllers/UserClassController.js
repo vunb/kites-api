@@ -8,19 +8,41 @@ class UserClassController {
     }
 
     'get /:id/profile' (req, res, next) {
-        res.ok(this.name);
+        var userId = req.param('id');
+        var userService = this.kites.sv.UserClass;
+
+        userService.findOne(userId)
+            .then((result) => {
+                res.ok(result);
+            })
     }
 
-    findAll (req, res, next) {
+    async findAll(req, res, next) {
         // get user service
         this.logger.info('This name:', this.name);
-        var userService = this.kites.service(this.name);
+        var userService = this.kites.sv.UserClass;
 
         // get all user
-        userService.getAll(req).then((result) => {
-            res.ok(result);
-        })
+        var result = await userService.getAll(req);
+        res.ok(result);
     }
+
+    async await (req, res, next) {
+        function resolveAfter2Seconds() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve('resolved');
+                }, 1000);
+            });
+        }
+        var result = await resolveAfter2Seconds();
+        res.ok(result);
+    }
+
+    async throws(req, res, next) {
+        throw 'Async throw!!!';
+    }
+
 }
 
 module.exports = UserClassController;

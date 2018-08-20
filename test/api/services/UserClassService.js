@@ -18,6 +18,10 @@ class UserClassService {
     //         3
     //     ])
     // }
+
+    findOne(id) {
+        return Promise.resolve(id);
+    }
 }
 
 module.exports = UserClassService;
