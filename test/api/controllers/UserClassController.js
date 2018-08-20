@@ -8,7 +8,13 @@ class UserClassController {
     }
 
     'get /:id/profile' (req, res, next) {
-        res.ok(this.name);
+        var userId = req.param('id');
+        var userService = this.kites.sv.UserClass;
+
+        userService.findOne(userId)
+            .then((result) => {
+                res.ok(result);
+            })
     }
 
     async findAll(req, res, next) {
@@ -33,7 +39,7 @@ class UserClassController {
         res.ok(result);
     }
 
-    async throws (req, res, next) {
+    async throws(req, res, next) {
         throw 'Async throw!!!';
     }
 

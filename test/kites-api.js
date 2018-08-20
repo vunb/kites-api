@@ -124,7 +124,7 @@ test('kites api test', function (t) {
                 .get('/api/userclass/vunb/profile')
                 .expect(200)
                 .then((res) => {
-                    t.equal(res.body, 'userclass', 'get user profile')
+                    t.equal(res.body, 'vunb', 'get user profile')
                 })
                 .catch(t.fail)
 
