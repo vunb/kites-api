@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'kites-api',
+    name: 'api',
     main: 'lib/main.js',
     options: {
         actions: true,
